@@ -1,0 +1,41 @@
+.content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+  height: 100%;
+  column-gap: 20px;
+  margin: 0px 10px;
+}
+
+.column {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lane-container {
+  width: 100%;
+}
+
+.lane {
+  overflow: auto;
+  width: 100%;
+  min-height: 500px;
+  transition: 0.2s height;
+  padding-bottom: 10px;
+}
+
+.card {
+  user-select: none;
+  padding: 16px;
+  margin: 12px 12px -2px 12px;
+  min-height: 50px;
+  color: white;
+  background-color: #456c86;
+  transition: background-color 0.5s;
+}
+
+.card.active {
+  background-color: #455f90;
+}
