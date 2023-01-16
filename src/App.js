@@ -85,7 +85,6 @@ export default function App() {
                         background: snap.isDraggingOver
                           ? 'lightblue'
                           : 'lightgrey',
-                        transition: 'background 0.2s',
                       }}
                     >
                       {column.items.map((item, index) => {
@@ -104,15 +103,22 @@ export default function App() {
                                   ref={provided.innerRef}
                                   {...provided.draggableProps}
                                   {...provided.dragHandleProps}
+                                  style={{
+                                    ...provided.draggableProps.style
+                                  }}
                                 >
-                                  {item.content}
+                                  <h1>
+                                    {item.content}
+                                  </h1>
                                 </div>
                               );
                             }}
                           </Draggable>
                         );
                       })}
-                      {provided.placeholder}
+                      <div className={classNames("placeholder", { "over": snap.isDraggingOver })}>
+                        {provided.placeholder}
+                      </div>
                     </div>
                   )}
                 </Droppable>

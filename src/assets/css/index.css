@@ -22,8 +22,9 @@
   overflow: auto;
   width: 100%;
   min-height: 500px;
-  transition: 0.2s height;
   padding-bottom: 10px;
+  height: auto;
+  transition: background-color 0.5s;
 }
 
 .card {
@@ -38,4 +39,13 @@
 
 .card.active {
   background-color: #455f90;
+}
+
+.placeholder {
+  height: 0;
+  transition: height 0.1s;
+}
+
+.placeholder.over {
+  height: 90%;
 }
