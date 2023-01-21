@@ -4,33 +4,28 @@ import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { v4 as uuid } from 'uuid';
 import './assets/css/index.css';
 
-const items = [
-  { id: uuid(), content: 'hi 1' },
-  { id: uuid(), content: 'hi 2' },
-  { id: uuid(), content: 'hi 3' },
-  { id: uuid(), content: 'hi 1' },
-  { id: uuid(), content: 'hi 2' },
-  { id: uuid(), content: 'hi 3' },
-  { id: uuid(), content: 'hi 1' },
-  { id: uuid(), content: 'hi 2' },
-  { id: uuid(), content: 'hi 3' },
-];
-
-
-const columns = {
+let columns = {
   [uuid()]: {
-    name: 'todo',
-    items: items,
+    name: 'TODO',
+    items: [{ id: uuid(), content: 'finish english hw' }, { id: uuid(), content: 'meeting @3' }, { id: uuid(), content: 'clean room' }],
   },
   [uuid()]: {
-    name: 'in progress',
+    name: 'In Progress',
     items: [],
   },
   [uuid()]: {
-    name: 'finish',
+    name: 'Finish',
     items: [],
   },
 };
+
+
+const add = (result, columns, setColumns) => {
+  // const column = [columns[0], columns[1], columns[2]];
+  // const index = column.indexOf(result);
+  // column[index].push({ id: uuid(), content: 'lwufwl' })
+  // setColumns(column);
+}
 
 const onDragEnd = (result, columns, setColumns) => {
   if (!result.destination) return;
@@ -69,7 +64,9 @@ export default function App() {
   const [c, setC] = useState(columns);
   return (
     <div className='content'>
-      <DragDropContext onDragEnd={(result) => onDragEnd(result, c, setC)}>
+      <DragDropContext
+        onDragEnd={(result) => onDragEnd(result, c, setC)}
+      >
         {Object.entries(c).map(([id, column]) => {
           return (
             <div className='column' key={id}>
@@ -123,9 +120,11 @@ export default function App() {
                   )}
                 </Droppable>
               </div>
+              {/* <button onClick={() => add(column, c, setC)}>penice</button> */}
             </div>
           );
-        })}
+        }
+        )}
       </DragDropContext>
     </div>
   );
